@@ -1,10 +1,22 @@
+//require('./models/User');
+
 //import express library
 const express = require('express');
 //import mongoose libary to connect to mongodb
 const mongoose =require('mongoose');
+//bodyparser automatically parses body information of requests
+const bodyparser= require ('body-parser');
+
+const authRoutes= require('./routes/authRoutes');
 
 //create app object, will represent entire application
 const app = express();
+
+//app.use(bodyParser.json());
+
+//associate routs to application
+app.use(authRoutes);
+
 
 //connect to database
 const mongoUri='mongodb+srv://admin:Password1!@cluster0-r8wji.mongodb.net/test?retryWrites=true&w=majority';
