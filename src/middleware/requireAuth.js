@@ -10,13 +10,12 @@ module.exports=(req,res,next)=>{
     return res.status(401).send({error: 'You must be logged in.'});
   }
   //extract token out of header
-  //currently authorization === 'Bearer + oken'.Remove Bearer. with replace()
+  //currently authorization === 'Bearer + token'.Remove Bearer. with replace()
   const token = authorization.replace('Bearer ', '');
-  console.log(token);
   //verify jsonwebtoken, then extract payload data (user id)
   jwt.verify(token, 'MY_SECRET_KEY', async (err,payload)=>{
     if (err){
-      return res.status(401).send({error: 'You muse bt logged in.'})
+      return res.status(401).send({error: 'You must be logged in.'})
     }
     const {userId}=payload;
 
