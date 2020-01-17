@@ -1,5 +1,5 @@
 require('./models/User');
-
+require('./models/Track');
 //import express library
 const express = require('express');
 //import mongoose libary to connect to mongodb
@@ -7,6 +7,7 @@ const mongoose =require('mongoose');
 //bodyparser automatically parses body information of requests
 const bodyParser= require('body-parser');
 const authRoutes= require('./routes/authRoutes');
+const trackRoute=require('./routes/trackRoute');
 const requireAuth=require('./middleware/requireAuth')
 
 //create app object, will represent entire application
@@ -14,8 +15,9 @@ const app = express();
 
 app.use(bodyParser.json());
 
-//associate routs to application
+//associate routes to application
 app.use(authRoutes);
+app.use(trackRoute);
 
 
 //connect to database
